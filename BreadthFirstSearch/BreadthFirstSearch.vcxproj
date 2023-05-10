@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="AdjacencyList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdjacencyList.h" />
