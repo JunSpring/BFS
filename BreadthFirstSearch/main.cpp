@@ -9,9 +9,19 @@ int main()
     if (!readALFromFile("graph1.txt", graph1))
         return 0;
 
+    AL graph2(0);
+    if (!readALFromFile("graph2.txt", graph2))
+        return 0;
+
     graph1.BFS(1);
+    cout << "----- graph1 BFS print -----" << endl;
     for (int i = 2; i < graph1.getSize(); i++)
         graph1.PRINT(1, i);
+
+    graph2.BFS(1);
+    cout << endl << "----- graph2 BFS print -----" << endl;
+    for (int i = 2; i < graph2.getSize(); i++)
+        graph2.PRINT(1, i);
 
     return 0;
 }
