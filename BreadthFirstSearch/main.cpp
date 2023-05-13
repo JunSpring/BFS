@@ -1,6 +1,5 @@
 #include <fstream>
 #include "AdjacencyList.h"
-#include "Queue.h"
 
 bool readALFromFile(string fileName, AL& al);
 
