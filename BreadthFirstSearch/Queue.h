@@ -9,7 +9,7 @@ template<typename T>
 class Queue 
 {
 private:
-    list<T> m_data;
+    list<T> q_data;
 
 public:
     void enqueue(const T& value);
@@ -21,33 +21,33 @@ public:
 template<typename T>
 void Queue<T>::enqueue(const T& value) 
 {
-    m_data.push_back(value);
+    q_data.push_back(value);
 }
 
 template<typename T>
 T Queue<T>::dequeue() 
 {
-    if (m_data.empty()) 
+    if (q_data.empty()) 
         throw out_of_range("out of range");
 
-    T frontValue = m_data.front();
-    m_data.pop_front();
+    T frontValue = q_data.front();
+    q_data.pop_front();
     return frontValue;
 }
 
 template<typename T>
 T& Queue<T>::front() 
 {
-    if (m_data.empty()) 
+    if (q_data.empty()) 
         throw out_of_range("out of range");
 
-    return m_data.front();
+    return q_data.front();
 }
 
 template<typename T>
 bool Queue<T>::empty() const 
 {
-    return m_data.empty();
+    return q_data.empty();
 }
 
 #endif
