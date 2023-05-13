@@ -31,7 +31,7 @@ public:
     void addEdge(const int& src, const int& dest);
     void BFS(const int& s);
     void PRINT(const int& s, const int& v);
-    void PRINTPATH(const int& s, const int& v);
+    bool PRINTPATH(const int& s, const int& v);
     const int& getSize();
     const int& getDistance(const int& u);
 }AL;

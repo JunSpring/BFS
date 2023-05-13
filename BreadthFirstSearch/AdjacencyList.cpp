@@ -54,16 +54,22 @@ void AdjacencyList::BFS(const int& s)
 
 void AdjacencyList::PRINT(const int& s, const int& v)
 {
-    PRINTPATH(s, v);
-    cout << ": " << getDistance(v) << endl;
+    if(PRINTPATH(s, v))
+        cout << ": " << getDistance(v) << endl;
 }
 
-void AdjacencyList::PRINTPATH(const int& s, const int& v) 
+bool AdjacencyList::PRINTPATH(const int& s, const int& v) 
 {
     if (v == s)
+    {
         cout << s;
+        return true;
+    }
     else if (p[v] == NULL)
-        cout << "no path from " << s << " to " << v << "exists" << endl;
+    {
+        cout << "no path from " << s << " to " << v << " exists" << endl;
+        return false;
+    }
     else
     {
         PRINTPATH(s, p[v]);
