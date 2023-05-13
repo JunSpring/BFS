@@ -33,7 +33,7 @@ void AdjacencyList::BFS(int s)
     p[s] = NULL;
     Q.enqueue(s);
 
-    while (!Q.isEmpty())
+    while (!Q.empty())
     {
         int u = Q.dequeue();
         
