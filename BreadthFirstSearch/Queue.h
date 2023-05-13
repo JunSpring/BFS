@@ -1,75 +1,53 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include <iostream>
+#include <list>
+
 using namespace std;
 
-template <typename T>
-class Queue {
+template<typename T>
+class Queue 
+{
 private:
-    struct Node {
-        T data;
-        Node* next;
-        Node(const T& item) : data(item), next(nullptr) {}
-    };
-    Node* head;
-    Node* tail;
-    int count;
+    list<T> m_data;
+
 public:
-    Queue() : head(nullptr), tail(nullptr), count(0) {}
-    ~Queue();
-    void enqueue(const T& item);
+    void enqueue(const T& value);
     T dequeue();
-    bool isEmpty();
-    int size();
+    T& front();
+    bool empty() const;
 };
 
-template <typename T>
-Queue<T>::~Queue() {
-    while (head != nullptr) {
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-    }
+template<typename T>
+void Queue<T>::enqueue(const T& value) 
+{
+    m_data.push_back(value);
 }
 
-template <typename T>
-void Queue<T>::enqueue(const T& item) {
-    Node* newNode = new Node(item);
-    if (tail == nullptr) {
-        head = newNode;
-    }
-    else {
-        tail->next = newNode;
-    }
-    tail = newNode;
-    count++;
+template<typename T>
+T Queue<T>::dequeue() 
+{
+    if (m_data.empty()) 
+        throw out_of_range("out of range");
+
+    T frontValue = m_data.front();
+    m_data.pop_front();
+    return frontValue;
 }
 
-template <typename T>
-T Queue<T>::dequeue() {
-    if (head == nullptr) {
-        throw out_of_range("Queue is empty.");
-    }
-    T data = head->data;
-    Node* temp = head;
-    head = head->next;
-    delete temp;
-    count--;
-    if (head == nullptr) {
-        tail = nullptr;
-    }
-    return data;
+template<typename T>
+T& Queue<T>::front() 
+{
+    if (m_data.empty()) 
+        throw out_of_range("out of range");
+
+    return m_data.front();
 }
 
-template <typename T>
-bool Queue<T>::isEmpty() {
-    return count == 0;
+template<typename T>
+bool Queue<T>::empty() const 
+{
+    return m_data.empty();
 }
 
-template <typename T>
-int Queue<T>::size() {
-    return count;
-}
-
-#endif // QUEUE_H
+#endif
