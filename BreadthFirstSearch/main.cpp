@@ -12,10 +12,7 @@ int main()
 
     graph1.BFS(1);
     for (int i = 2; i < graph1.getSize(); i++)
-    {
-        graph1.PRINTPATH(1, i);
-        cout << ": " << graph1.getDistance(i) << endl;
-    }
+        graph1.PRINT(1, i);
 
     return 0;
 }

@@ -27,12 +27,13 @@ private:
     Queue<int> Q;
 
 public:
-    AdjacencyList(int v);
-    void addEdge(int src, int dest);
-    void BFS(int s);
-    void PRINTPATH(int s, int v);
-    int getSize();
-    int getDistance(int u);
+    AdjacencyList(const int& v);
+    void addEdge(const int& src, const int& dest);
+    void BFS(const int& s);
+    void PRINT(const int& s, const int& v);
+    void PRINTPATH(const int& s, const int& v);
+    const int& getSize();
+    const int& getDistance(const int& u);
 }AL;
 
 #endif // ADJACENCYLIST_H

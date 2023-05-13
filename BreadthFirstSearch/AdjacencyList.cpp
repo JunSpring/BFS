@@ -1,6 +1,6 @@
 #include "AdjacencyList.h"
 
-AdjacencyList::AdjacencyList(int size) 
+AdjacencyList::AdjacencyList(const int& size) 
 {
     this->size = size;
 
@@ -10,13 +10,13 @@ AdjacencyList::AdjacencyList(int size)
     p.resize(size);
 }
 
-void AdjacencyList::addEdge(int src, int dest) 
+void AdjacencyList::addEdge(const int& src, const int& dest) 
 {
     Adj[src].push_back(dest);
     Adj[dest].push_back(src);
 }
 
-void AdjacencyList::BFS(int s)
+void AdjacencyList::BFS(const int& s)
 {
     for (int u = 0; u < size; u++)
     {
@@ -37,7 +37,7 @@ void AdjacencyList::BFS(int s)
     {
         int u = Q.dequeue();
         
-        for (const auto& v : Adj[u])
+        for (const int& v : Adj[u])
         {
             if (color[v] == WHITE)
             {
@@ -52,25 +52,31 @@ void AdjacencyList::BFS(int s)
     }
 }
 
-void AdjacencyList::PRINTPATH(int s, int v) 
+void AdjacencyList::PRINT(const int& s, const int& v)
+{
+    PRINTPATH(s, v);
+    cout << ": " << getDistance(v) << endl;
+}
+
+void AdjacencyList::PRINTPATH(const int& s, const int& v) 
 {
     if (v == s)
-        cout << s << ' ';
+        cout << s;
     else if (p[v] == NULL)
         cout << "no path from " << s << " to " << v << "exists" << endl;
     else
     {
         PRINTPATH(s, p[v]);
-        cout << v << " -> ";
+        cout << " -> " << v;
     }
 }
 
-int AdjacencyList::getSize()
+const int& AdjacencyList::getSize()
 {
     return size;
 }
 
-int AdjacencyList::getDistance(int u)
+const int& AdjacencyList::getDistance(const int& u)
 {
     return d[u];
 }
