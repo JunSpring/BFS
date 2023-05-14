@@ -1,5 +1,6 @@
 #include "AdjacencyList.h"
 
+// size를 받고 vector resize하는 생성자
 AdjacencyList::AdjacencyList(const int& size) 
 {
     this->size = size; // size 저장
@@ -16,7 +17,6 @@ void AdjacencyList::addEdge(const int& src, const int& dest)
 {
     // Edge 추가
     Adj[src].push_back(dest);
-    Adj[dest].push_back(src);
 }
 
 // BFS 함수
@@ -31,12 +31,12 @@ void AdjacencyList::BFS(const int& s)
 
         color[u] = WHITE;
         d[u] = INT_MAX;
-        p[u] = NULL;
+        p[u] = -1;
     }
 
     color[s] = GRAY;
     d[s] = 0;
-    p[s] = NULL;
+    p[s] = -1;
     Q.enqueue(s);
 
     while (!Q.empty())
@@ -72,18 +72,18 @@ bool AdjacencyList::PRINTPATH(const int& s, const int& v)
 
     if (v == s)
     {
-        cout << s;
+        cout << s + 1;
         return true; // path가 존재하다면 true 반환
     }
-    else if (p[v] == NULL)
+    else if (p[v] == -1)
     {
-        cout << "no path from " << s << " to " << v << " exists" << endl;
+        cout << "no path from " << s + 1 << " to " << v + 1 << " exists" << endl;
         return false; // path가 없다면 false 반환
     }
     else
     {
-        PRINTPATH(s, p[v]);
-        cout << " -> " << v;
+        if (PRINTPATH(s, p[v]))
+            cout << " -> " << v + 1;
     }
 }
 

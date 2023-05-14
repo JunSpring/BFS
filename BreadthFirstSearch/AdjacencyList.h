@@ -29,7 +29,7 @@ private:
     Queue<int> Q;           // Queue
 
 public:
-    AdjacencyList(const int& v);                    // size를 받고 vector resize하는 함수
+    AdjacencyList(const int& v);                    // size를 받고 vector resize하는 생성자
     void addEdge(const int& src, const int& dest);  // Edge를 추가하는 함수
     void BFS(const int& s);                         // BFS 함수
     void PRINT(const int& s, const int& v);         // path와 distance를 출력하는 함수

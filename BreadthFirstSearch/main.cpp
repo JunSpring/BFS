@@ -1,22 +1,22 @@
 #include <fstream>
 #include "AdjacencyList.h"
 
-// 텍스트 파일을 읽고 Edge를 추가하는 함수
+// size를 받고 vector resize하는 생성자
 bool readALFromFile(string fileName, AL& al);
 
 int main()
 {
     // graph 선언 및 텍스트파일에서 로드
-    AL graph1(0);
-    if (!readALFromFile("graph1.txt", graph1))
+    AL graph(0);
+    if (!readALFromFile("graph4.txt", graph))
         return 0;
 
     // graph에서 1번노드부터 BFS 실행
-    graph1.BFS(1);
-    cout << "----- graph1 BFS print -----" << endl;
+    graph.BFS(0);
+    cout << "----- graph4 BFS print -----" << endl;
     // 1번노드에서 1번노드를 제외한 모든 노드까지의 path 출력
-    for (int i = 2; i < graph1.getSize(); i++)
-        graph1.PRINT(1, i);
+    for (int i = 1; i < graph.getSize(); i++)
+        graph.PRINT(0, i);
 
     return 0;
 }
